@@ -1,6 +1,4 @@
-# Project Title
-
-**Project Title**: (Your project's name)
+# MSU Building Classification Challenge
 
 **Description**: This Model is for MSU's Building Classification Project that identifies 10 different buildings around MSU's campus.
 
