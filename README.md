@@ -53,16 +53,7 @@ This project uses ResNet34 as the main model that we decided to train for buildi
 The model achieved a **best validation accuracy of 95%** at epoch 17. The confusion matrix, though initially challenging to interpret, confirmed this high accuracy. Testing on the provided dataset without any image augmentation yielded similarly high accuracy levels.
 
 ## Testing Instructions
-
-
-
-## Requirements
-
-- Python (version X.X)
-- TensorFlow (version X.X)
-- Keras (version X.X)
-- NumPy
-- (Other libraries if needed)
+The model was entirely trained in Google Colab, so it is easiest to run it there. Add the model and dataset to the memory of the Colab instance and switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the Colab instance. Alternatively you can add the files to your google drive.
 
 To install all dependencies:
 ```bash
