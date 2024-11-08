@@ -29,7 +29,7 @@ The Model that is for the project is our submission for MSU's Building Classific
 
 ## Model Architecture
 
-This project uses ResNet34 as the main model that we decided to train for building classification.
+Our campus vision AI competition project initially employed a ResNet50 architecture as a feature extractor, intending to fine-tune it on the competition dataset. However, the model's size proved computationally prohibitive, hindering convergence speed during training. Consequently, we transitioned to a ResNet34 backbone, significantly reducing the number of parameters while retaining the advantageous residual connections. This modification yielded improved convergence rates and faster training times, enabling more efficient exploration of hyperparameter settings within the competition's timeframe. The ResNet34 model was pretrained on ImageNet, providing a strong initialization for our task. We replaced the final fully connected layer with a new layer appropriate for the number of classes in our competition dataset. Data augmentation techniques, including random cropping, horizontal flipping, and gaussian blur, were used to enhance model generalization and robustness to variations in the input images. The model was trained using the Adam optimizer with a learning rate scheduler to further improve convergence.
 
 
 ## Training Process
@@ -44,16 +44,19 @@ This project uses ResNet34 as the main model that we decided to train for buildi
 
 ## Challenges and Approach
 
-- **Cross-Validation-Like Technique**: Implemented a strategy similar to cross-fold validation by varying the validation data every 5 epochs. This enabled better generalization and evaluation.
-- **Handling Colab Interruptions**: To prevent the problem of a session interruption in Google Colab and deleting and removing our trained models after each epoch, we decided to save the model after each epoch the model runs on.
-- **Learning Rate Adjustment**: Implemented a dynamic learning rate scheduler to improve model performance and prevent overfitting.
+
+Training deep learning models for our campus vision AI competition presented several challenges, particularly given the limited timeframe and computational resources available through Google Colab. One early challenge was getting a cleaned, robust dataset to train the model off of. Thus, we took roughly 1,000 images of each building on campus, manually processing each one to ensure that the model was not trained on bad data. We decided to use only our dataset, as we felt the image quality of other participants was lacking and our dataset covered the majority of angles for each building. Another key hurdle was ensuring robust model evaluation and generalization. To address this, we implemented a cross-validation-like strategy, rotating the validation set every 5 epochs. This approach allowed us to assess performance on a larger portion of the dataset and mitigate potential biases associated with a fixed validation split.
+
+Another significant challenge stemmed from the inherent instability of Colab sessions, which are prone to interruptions and resource limitations. To prevent the loss of trained models due to session disconnections, we implemented a model checkpointing strategy, saving the model weights after each epoch. This ensured that progress was preserved, even if a Colab session was terminated prematurely.
+
+Finally, we recognized the importance of fine-tuning the learning rate throughout training. To achieve this, we incorporated a dynamic learning rate scheduler, likely reducing the learning rate based on validation performance or a pre-defined schedule (e.g., step decay or cosine annealing). This dynamic adjustment helped optimize convergence and prevented overfitting, particularly crucial given the potential complexity of our vision task.
 
 ## Results
 
-The model achieved a **best validation accuracy of 95%** at epoch 17. The confusion matrix, though initially challenging to interpret, confirmed this high accuracy. Testing on the provided dataset without any image augmentation yielded similarly high accuracy levels.
+The model achieved a **best validation accuracy of 95%** at epoch 17. 
 
 ## Testing Instructions
-The model was entirely trained in Google Colab, so it is easiest to run it there. Add the model and dataset to the memory of the Colab instance and switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the Colab instance. Alternatively you can add the files to your google drive.
+The model was entirely trained in Google Colab, so it is easiest to run it there. Open the test_model notebook in Colab. Then add the model and dataset to the memory of the Colab instance and switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the Colab instance. Alternatively you can add the files to your google drive, which is how the notebook is set up intially. 
 
 To install all dependencies:
 ```bash
