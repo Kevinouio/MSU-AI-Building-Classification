@@ -19,7 +19,7 @@ Members:
 
 ## Introduction
 
-The Model that is for the project is our submission for MSU's Building Classification Project, to where it would identify 10 different buildings being:
+The model identifies the following buildings on the Mississippi State University Starkville Campus:
 - Butler Hall
 - McCool Hall
 - McCain Hall
