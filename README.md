@@ -19,6 +19,8 @@ Members:
 
 ## Introduction
 
+This project develops an image classification model using a modified ResNet50 architecture, aiming to classify the below buildings into different categories. The model utilizes transfer learning, leveraging pre-trained ResNet50 weights on ImageNet and fine-tuning them on a our personal dataset. The training process incorporates data augmentation techniques like shearing, zooming, rotation, and flipping to enhance model robustness. Custom callbacks are implemented to save the best model weights at different intervals, reset the validation data periodically, visualize the confusion matrix after each epoch, and dynamically adjust the learning rate based on validation loss. The model is evaluated on a held-out test set, and its performance is visualized using a confusion matrix, providing insights into the classification accuracy for each building category.
+
 The model identifies the following buildings on the Mississippi State University Starkville Campus:
 - Butler Hall
 - McCool Hall
@@ -33,16 +35,19 @@ The model identifies the following buildings on the Mississippi State University
 
 ## Model Architecture
 
-Our campus vision AI competition project initially employed a ResNet50 architecture as a feature extractor, intending to fine-tune it on the competition dataset. However, the model's size proved computationally prohibitive, hindering convergence speed during training. Consequently, we transitioned to a ResNet34 backbone, which yielded improved convergence rates and faster training times The ResNet34 model was pretrained on ImageNet, providing a strong initialization for our task. We replaced the final fully connected layer with a new layer appropriate for the number of classes in our competition dataset. Data augmentation techniques, including random cropping, horizontal flipping, and gaussian blur, were used to enhance model generalization and robustness to variations in the input images. The model was trained using the Adam optimizer with a learning rate scheduler to further improve convergence.
+The model architecture is based on a modified ResNet50, adapted to resemble a ResNet34 by removing some of the deeper layers. The pre-trained ResNet50 (excluding its classification head) serves as a feature extractor. This feature extractor is followed by a Global Average Pooling layer to reduce the dimensionality of the feature maps. Next, a dense layer with 1024 neurons and ReLU activation, regularized by L2 regularization, is added. A dropout layer with a rate of 0.5 is included to prevent overfitting. Finally, an output dense layer with a softmax activation function provides the classification probabilities for each of the building categories. 
 
 ## Training Process
+-**Data Loading and Augmentation**: Images are loaded from a directory on Google Drive (/content/drive/MyDrive/AIDataset) and augmented using ImageDataGenerator. Augmentations include rescaling, shearing, zooming, rotation, horizontal flipping, width/height shifts. The dataset is split into training and validation sets (80/20 split).
+-**Model Compilation**: The model is compiled using the Adam optimizer with a learning rate of 0.0005, categorical cross-entropy loss (suitable for multi-class classification), and accuracy as the evaluation metric.
+-**Callbacks**:
+  -SaveBestEveryEpoch: Saves model every epoch and best model per 5-epoch block.
 
-- **Batch size**: 32
-- **Epochs**: 20
-- **Validation approach**: Cross-validation by updating validation data every 5 epochs.
-- **Model Saving**: Saved weights after every epoch to handle interruptions (e.g., from Colab session terminations).
-- **Learning Rate Adjustment**: Reduced by half if validation accuracy did not increase over two consecutive epochs.
-- **Confusion Matrix**: Printed after each epoch to observe class distribution and validation accuracy.
+  -ReduceLROnPlateau: Reduces learning rate on plateau (factor=0.5, patience=3).
+
+  -ResetValidationDataCallback: Resets validation data every 10 epochs.
+
+  -ConfusionMatrixCallback: Displays confusion matrix after each epoch.
 
 ## Challenges and Approach
 
