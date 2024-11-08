@@ -38,7 +38,19 @@ The model identifies the following buildings on the Mississippi State University
 The model architecture is based on a modified ResNet50, adapted to resemble a ResNet34 by removing some of the deeper layers. The pre-trained ResNet50 (excluding its classification head) serves as a feature extractor. This feature extractor is followed by a Global Average Pooling layer to reduce the dimensionality of the feature maps. Next, a dense layer with 1024 neurons and ReLU activation, regularized by L2 regularization, is added. A dropout layer with a rate of 0.5 is included to prevent overfitting. Finally, an output dense layer with a softmax activation function provides the classification probabilities for each of the building categories. 
 
 ## Training Process
-- **Data Loading and Augmentation**: Images are loaded from a directory on Google Drive (/content/drive/MyDrive/AIDataset) and augmented using ImageDataGenerator. Augmentations include rescaling, shearing, zooming, rotation, horizontal flipping, width/height shifts. The dataset is split into training and validation sets (80/20 split).
+- **Data Loading and Augmentation**: These augmentations artificially increased the diversity of our training data, helping the model learn more robust features and reducing overfitting. The ImageDataGenerator applied these transformations randomly during each epoch, ensuring that the model saw a slightly different version of the training data in each iteration. This approach significantly improved the model's ability to generalize to unseen images. The augmentations are as followings:
+  - Rescaling: Pixel values were normalized by dividing by 255, scaling them to the range [0, 1].
+
+  - Shearing: Images were randomly sheared horizontally or vertically within a range of ±20%.
+
+  - Zooming: Random zooming was applied with a range of ±20%, simulating variations in image scale.
+
+  - Rotation: Images were randomly rotated by up to 20 degrees in either direction.
+
+  - Horizontal Flipping: A random horizontal flip was applied to some images, introducing further variation.
+
+  - Width/Height Shifts: Images were randomly shifted horizontally or vertically by up to 20% of their width or height, respectively.
+  - 
 - **Model Compilation**: The model is compiled using the Adam optimizer with a learning rate of 0.0005, categorical cross-entropy loss (suitable for multi-class classification), and accuracy as the evaluation metric.
 - **Callbacks**:
   - SaveBestEveryEpoch: Saves model every epoch and best model per 5-epoch block.
@@ -64,7 +76,7 @@ The confusion matrix for the full dataset is in the repo as FullDatasetMatrix.pn
 
 ## Testing Instructions
 
-The model was entirely trained in Google Colab, so it is easiest to run it there. Add the model and dataset to a google drive. Open the test_model notebook in Colab. Switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the google drive (after it is mounted). Alternatively you can add the files manually and specify the paths in the colab instance. It is possible to run it locally, but it is not consistent and is not reproducible. The code would be the same as the test_model notebook and everything is stored locally. The requirements.txt is only for attempting to run it locally, but it is *highly suggested* to use Colab.
+The model is designed to run optimally within a Google Colab environment. For best results, upload the model and dataset to your Google Drive and utilize the provided test_model notebook within Colab, selecting a TPU runtime. Ensure all file paths within the notebook are updated to reflect your Drive's directory structure. While local execution is possible, it's not recommended due to potential reproducibility issues. For local testing, replicate the test_model notebook's code and adjust paths accordingly; the requirements.txt file lists necessary dependencies for this approach. However, using Colab is strongly encouraged for consistent and reproducible results.
 
 To install all dependencies:
 ```bash
