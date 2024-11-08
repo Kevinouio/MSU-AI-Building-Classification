@@ -38,16 +38,16 @@ The model identifies the following buildings on the Mississippi State University
 The model architecture is based on a modified ResNet50, adapted to resemble a ResNet34 by removing some of the deeper layers. The pre-trained ResNet50 (excluding its classification head) serves as a feature extractor. This feature extractor is followed by a Global Average Pooling layer to reduce the dimensionality of the feature maps. Next, a dense layer with 1024 neurons and ReLU activation, regularized by L2 regularization, is added. A dropout layer with a rate of 0.5 is included to prevent overfitting. Finally, an output dense layer with a softmax activation function provides the classification probabilities for each of the building categories. 
 
 ## Training Process
--**Data Loading and Augmentation**: Images are loaded from a directory on Google Drive (/content/drive/MyDrive/AIDataset) and augmented using ImageDataGenerator. Augmentations include rescaling, shearing, zooming, rotation, horizontal flipping, width/height shifts. The dataset is split into training and validation sets (80/20 split).
--**Model Compilation**: The model is compiled using the Adam optimizer with a learning rate of 0.0005, categorical cross-entropy loss (suitable for multi-class classification), and accuracy as the evaluation metric.
--**Callbacks**:
-  -SaveBestEveryEpoch: Saves model every epoch and best model per 5-epoch block.
+- **Data Loading and Augmentation**: Images are loaded from a directory on Google Drive (/content/drive/MyDrive/AIDataset) and augmented using ImageDataGenerator. Augmentations include rescaling, shearing, zooming, rotation, horizontal flipping, width/height shifts. The dataset is split into training and validation sets (80/20 split).
+- **Model Compilation**: The model is compiled using the Adam optimizer with a learning rate of 0.0005, categorical cross-entropy loss (suitable for multi-class classification), and accuracy as the evaluation metric.
+- **Callbacks**:
+  - SaveBestEveryEpoch: Saves model every epoch and best model per 5-epoch block.
 
-  -ReduceLROnPlateau: Reduces learning rate on plateau (factor=0.5, patience=3).
+  - ReduceLROnPlateau: Reduces learning rate on plateau (factor=0.5, patience=3).
 
-  -ResetValidationDataCallback: Resets validation data every 10 epochs.
+  - ResetValidationDataCallback: Resets validation data every 10 epochs.
 
-  -ConfusionMatrixCallback: Displays confusion matrix after each epoch.
+  - ConfusionMatrixCallback: Displays confusion matrix after each epoch.
 
 ## Challenges and Approach
 
