@@ -29,8 +29,7 @@ The Model that is for the project is our submission for MSU's Building Classific
 
 ## Model Architecture
 
-Our campus vision AI competition project initially employed a ResNet50 architecture as a feature extractor, intending to fine-tune it on the competition dataset. However, the model's size proved computationally prohibitive, hindering convergence speed during training. Consequently, we transitioned to a ResNet34 backbone, significantly reducing the number of parameters while retaining the advantageous residual connections. This modification yielded improved convergence rates and faster training times, enabling more efficient exploration of hyperparameter settings within the competition's timeframe. The ResNet34 model was pretrained on ImageNet, providing a strong initialization for our task. We replaced the final fully connected layer with a new layer appropriate for the number of classes in our competition dataset. Data augmentation techniques, including random cropping, horizontal flipping, and gaussian blur, were used to enhance model generalization and robustness to variations in the input images. The model was trained using the Adam optimizer with a learning rate scheduler to further improve convergence.
-
+Our campus vision AI competition project initially employed a ResNet50 architecture as a feature extractor, intending to fine-tune it on the competition dataset. However, the model's size proved computationally prohibitive, hindering convergence speed during training. Consequently, we transitioned to a ResNet34 backbone, which yielded improved convergence rates and faster training times The ResNet34 model was pretrained on ImageNet, providing a strong initialization for our task. We replaced the final fully connected layer with a new layer appropriate for the number of classes in our competition dataset. Data augmentation techniques, including random cropping, horizontal flipping, and gaussian blur, were used to enhance model generalization and robustness to variations in the input images. The model was trained using the Adam optimizer with a learning rate scheduler to further improve convergence.
 
 ## Training Process
 
@@ -40,7 +39,6 @@ Our campus vision AI competition project initially employed a ResNet50 architect
 - **Model Saving**: Saved weights after every epoch to handle interruptions (e.g., from Colab session terminations).
 - **Learning Rate Adjustment**: Reduced by half if validation accuracy did not increase over two consecutive epochs.
 - **Confusion Matrix**: Printed after each epoch to observe class distribution and validation accuracy.
-
 
 ## Challenges and Approach
 
