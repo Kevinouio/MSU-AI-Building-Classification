@@ -19,7 +19,7 @@ Members:
 
 ## Introduction
 
-This project develops an image classification model using a modified ResNet50 architecture, aiming to classify the below buildings into different categories. The model utilizes transfer learning, leveraging pre-trained ResNet50 weights on ImageNet and fine-tuning them on a our personal dataset. The training process incorporates data augmentation techniques like shearing, zooming, rotation, and flipping to enhance model robustness. Custom callbacks are implemented to save the best model weights at different intervals, reset the validation data periodically, visualize the confusion matrix after each epoch, and dynamically adjust the learning rate based on validation loss. The model is evaluated on a held-out test set, and its performance is visualized using a confusion matrix, providing insights into the classification accuracy for each building category.
+This project develops an image classification model using a modified ResNet50 architecture, aiming to classify the below buildings into different categories. The model utilizes transfer learning, leveraging pre-trained ResNet50 weights on ImageNet and fine-tuning them on a our personal dataset. The training process incorporates data augmentation techniques like shearing, zooming, rotation, and flipping to enhance model robustness. Custom callbacks are implemented to save the best model weights at different intervals, reset the validation data periodically, visualize the confusion matrix after each epoch, and dynamically adjust the learning rate based on validation loss. The model is evaluated on a held-out test set, and its performance is visualized using a confusion matrix, providing insights into the classification accuracy for each building category. The model took roughly 48 hours to train. 
 
 The model identifies the following buildings on the Mississippi State University Starkville Campus:
 - Butler Hall
@@ -50,7 +50,7 @@ The model architecture is based on a modified ResNet50, adapted to resemble a Re
   - Horizontal Flipping: A random horizontal flip was applied to some images, introducing further variation.
 
   - Width/Height Shifts: Images were randomly shifted horizontally or vertically by up to 20% of their width or height, respectively.
-  - 
+  
 - **Model Compilation**: The model is compiled using the Adam optimizer with a learning rate of 0.0005, categorical cross-entropy loss (suitable for multi-class classification), and accuracy as the evaluation metric.
 - **Callbacks**:
   - SaveBestEveryEpoch: Saves model every epoch and best model per 5-epoch block.
@@ -72,7 +72,7 @@ Given the complexity of distinguishing between similar-looking buildings, we opt
 Finally, visualizing model performance throughout the training process was essential. Beyond tracking standard metrics like loss and accuracy, we implemented a custom callback to generate and display the confusion matrix after each epoch. This visualization provided valuable insights into class-specific performance, highlighting which buildings the model struggled to differentiate and guiding further refinements to our approach. 
 
 ## Results
-The confusion matrix for the full dataset is in the repo as FullDatasetMatrix.png and the confusion matrix for the cleaned dataset is CleanedDatasetMatrix.png. On the full dataset, we achieved 11237/12584, or roughly 89.3% accuracy. On the cleaned dataset, we achieved 10062/10193, or roughly 98.7% accuracy. The loss graph and the validation accuracy through epochs is also attached. 
+The confusion matrix for the full dataset is in the repo as FullDatasetMatrix.png and the confusion matrix for the cleaned dataset is CleanedDatasetMatrix.png. On the full dataset, we achieved 11237/12584, or roughly 89.3% accuracy. On the cleaned dataset, we achieved 10062/10193, or roughly 98.7% accuracy. The loss graph and the validation accuracy through epochs is also attached. The noticable dips in loss and validation accuracy were a result of stopping and restarting the model. 
 
 ## Testing Instructions
 
