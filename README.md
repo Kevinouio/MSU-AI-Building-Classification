@@ -45,7 +45,7 @@ This project uses ResNet34 as the main model that we decided to train for buildi
 ## Challenges and Approach
 
 - **Cross-Validation-Like Technique**: Implemented a strategy similar to cross-fold validation by varying the validation data every 5 epochs. This enabled better generalization and evaluation.
-- **Handling Colab Interruptions**: To prevent the problem of a session interruption in Google Collab and deleting and removing our trained models after each epoch, we decided to save the model after each epoch the model runs on.
+- **Handling Colab Interruptions**: To prevent the problem of a session interruption in Google Colab and deleting and removing our trained models after each epoch, we decided to save the model after each epoch the model runs on.
 - **Learning Rate Adjustment**: Implemented a dynamic learning rate scheduler to improve model performance and prevent overfitting.
 
 ## Results
