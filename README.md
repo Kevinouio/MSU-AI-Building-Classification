@@ -1,6 +1,11 @@
-# MSU Building Classification Challenge
+# MSU Building Classification Challenge - Gavin Jiang Fan Club
 
 **Description**: This Model is for MSU's Building Classification Project that identifies 10 different buildings around MSU's campus.
+
+Members:
+Ryan Goodwin - rdg291@msstate.edu
+Kevin Ho - kth258@msstate.edu
+
 
 ## Table of Contents
 
@@ -53,7 +58,7 @@ The model achieved a **best validation accuracy of 95%** at epoch 17. The confus
 
 ## Testing Instructions
 
-The model was entirely trained in Google Colab, so it is easiest to run it there. Add the model and dataset to a google drive. Open the test_model notebook in Colab. Switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the google drive (after it is mounted). Alternatively you can add the files manually and specify the paths in the colab instance. 
+The model was entirely trained in Google Colab, so it is easiest to run it there. Add the model and dataset to a google drive. Open the test_model notebook in Colab. Switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the google drive (after it is mounted). Alternatively you can add the files manually and specify the paths in the colab instance. It is possible to run it locally, but it is not consistent and is not reproducible. The code would be the same as the test_model notebook and everything is stored locally. The requirements.txt is only for attempting to run it locally, but it is *highly suggested* to use Colab.
 
 To install all dependencies:
 ```bash
