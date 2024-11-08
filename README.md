@@ -10,7 +10,6 @@
 - [Challenges and Approach](#challenges-and-approach)
 - [Results](#results)
 - [Testing Instructions](#testing-instructions)
-- [Requirements](#requirements)
 - [Model Download](#model-download)
 
 ## Introduction
