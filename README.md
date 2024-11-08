@@ -44,7 +44,6 @@ Our campus vision AI competition project initially employed a ResNet50 architect
 
 ## Challenges and Approach
 
-
 Training deep learning models for our campus vision AI competition presented several challenges, particularly given the limited timeframe and computational resources available through Google Colab. One early challenge was getting a cleaned, robust dataset to train the model off of. Thus, we took roughly 1,000 images of each building on campus, manually processing each one to ensure that the model was not trained on bad data. We decided to use only our dataset, as we felt the image quality of other participants was lacking and our dataset covered the majority of angles for each building. Another key hurdle was ensuring robust model evaluation and generalization. To address this, we implemented a cross-validation-like strategy, rotating the validation set every 5 epochs. This approach allowed us to assess performance on a larger portion of the dataset and mitigate potential biases associated with a fixed validation split.
 
 Another significant challenge stemmed from the inherent instability of Colab sessions, which are prone to interruptions and resource limitations. To prevent the loss of trained models due to session disconnections, we implemented a model checkpointing strategy, saving the model weights after each epoch. This ensured that progress was preserved, even if a Colab session was terminated prematurely.
@@ -53,10 +52,11 @@ Finally, we recognized the importance of fine-tuning the learning rate throughou
 
 ## Results
 
-The model achieved a **best validation accuracy of 95%** at epoch 17. 
+The model achieved a **best validation accuracy of 95%** at epoch 17. The confusion matrix for the full dataset is in the repo as FullDatasetMatrix.png and the confusion matrix for the cleaned dataset is CleanedDatasetMatrix.png. On the full dataset, we achieved 11237/12584, or roughly 89.3% accuracy. On the cleaned dataset, we achieved 10062/10193, or roughly 98.7% accuracy.
 
 ## Testing Instructions
-The model was entirely trained in Google Colab, so it is easiest to run it there. Open the test_model notebook in Colab. Then add the model and dataset to the memory of the Colab instance and switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the Colab instance. Alternatively you can add the files to your google drive, which is how the notebook is set up intially. 
+
+The model was entirely trained in Google Colab, so it is easiest to run it there. Add the model and dataset to a google drive. Open the test_model notebook in Colab. Switch the hosted runtime to TPU. Change the paths in the notebook to their corresponding path in the google drive (after it is mounted). Alternatively you can add the files manually and specify the paths in the colab instance. 
 
 To install all dependencies:
 ```bash
@@ -65,5 +65,6 @@ pip install -r requirements.txt
 
 
 ## Model Download
-- 
+- https://drive.google.com/file/d/1-AUcm_axuGYRgV79xWiUsgr61aXTv1jl/view?usp=sharing
+
 
