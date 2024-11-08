@@ -3,8 +3,8 @@
 **Description**: This Model is for MSU's Building Classification Project that identifies 10 different buildings around MSU's campus.
 
 Members:
-Ryan Goodwin - rdg291@msstate.edu
-Kevin Ho - kth258@msstate.edu
+- Ryan Goodwin - rdg291@msstate.edu
+- Kevin Ho - kth258@msstate.edu
 
 
 ## Table of Contents
