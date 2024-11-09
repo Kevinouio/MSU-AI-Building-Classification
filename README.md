@@ -72,7 +72,8 @@ Given the complexity of distinguishing between similar-looking buildings, we opt
 Finally, visualizing model performance throughout the training process was essential. Beyond tracking standard metrics like loss and accuracy, we implemented a custom callback to generate and display the confusion matrix after each epoch. This visualization provided valuable insights into class-specific performance, highlighting which buildings the model struggled to differentiate and guiding further refinements to our approach. 
 
 ## Results
-The confusion matrix for the full dataset is in the repo as FullDatasetMatrix.png and the confusion matrix for the cleaned dataset is CleanedDatasetMatrix.png. On the full dataset, we achieved 11237/12584, or roughly 89.3% accuracy. On the cleaned dataset, we achieved 10062/10193, or roughly 98.7% accuracy. The loss graph and the validation accuracy through epochs is also attached. The noticable dips in loss and validation accuracy were a result of stopping and restarting the model. 
+The confusion matrix for the full dataset is in the repo as FullDatasetMatrix.png and the confusion matrix for the cleaned dataset is CleanedDatasetMatrix.png. On the full dataset, we achieved 11237/12584, or roughly 89.3% accuracy. On the cleaned dataset, we achieved 10062/10193, or roughly 98.7% accuracy. 
+The loss graph and the validation accuracy through epochs is also attached. The noticable dips in loss and validation accuracy were a result of stopping and restarting the model. The model ended with a final loss of 0.4132 and a validationa accuracy of 0.9395.
 
 ## Testing Instructions
 
