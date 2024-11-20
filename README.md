@@ -85,7 +85,10 @@ To install all dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-
+If you get an error, try the other requirements.txt:
+```
+pip install -r requirements2.txt
+```
 
 ## Model Download
 - https://drive.google.com/file/d/1-AUcm_axuGYRgV79xWiUsgr61aXTv1jl/view?usp=sharing
