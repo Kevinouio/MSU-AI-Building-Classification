@@ -79,7 +79,7 @@ The loss graph and the validation accuracy through epochs is also attached. The 
 
 The model is designed to run optimally within a Google Colab environment. For best results, upload the model and dataset to your Google Drive and utilize the provided test_model notebook within Colab, selecting a TPU runtime. Ensure all file paths within the notebook are updated to reflect your Drive's directory structure. While local execution is possible, it's not recommended due to potential reproducibility issues. For local testing, replicate the test_model notebook's code and adjust paths accordingly; the requirements.txt file lists necessary dependencies for this approach. However, using Colab is strongly encouraged for consistent and reproducible results. 
 
-To run locally, please use python 3.10.15 with the following requirements. Run the with the "Model Runner.py" evaluation file, and change the paths to the model path and the dataset path in the code.
+To run locally, please create a conda environment with python 3.10.15 with the following requirements. Include the .h5 file in the cloned directory.  Run the with the "Model Runner.py" evaluation file, and change the paths to the model path and the dataset path in the code.
 
 To install all dependencies:
 ```bash
