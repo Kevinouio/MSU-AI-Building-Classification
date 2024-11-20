@@ -84,10 +84,10 @@ To install all dependencies:
 pip install -r requirements.txt
 ```
 ```
-tensorflow=2.15.0
-scikit-learn=1.5.2
-seaborn=0.13.2
-matplotlib=3.8.0
+tensorflow~=2.15.0
+scikit-learn~=1.5.2
+seaborn~=0.13.2
+matplotlib~=3.8.0
 ```
 
 
