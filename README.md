@@ -82,8 +82,8 @@ The model is designed to run optimally within a Google Colab environment. For be
 To install all dependencies:
 ```bash
 pip install -r requirements.txt
-
-
+```
+```
 tensorflow=2.15.0
 scikit-learn=1.5.2
 seaborn=0.13.2
